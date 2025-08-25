@@ -1,0 +1,583 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio · Literatura Brasileira</title>
+  <meta name="description" content="Portfólio de programação com tema cultural: panorama da Literatura Brasileira, linha do tempo, autores, dados e quiz. Conteúdo com fontes confiáveis e imagens sob licença adequada." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="Portfólio · Literatura Brasileira" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <style>
+    :root { --bg: #ffffff; --fg: #1f2937; --muted:#6b7280; --brand:#0ea5e9; --brand-2:#8b5cf6; --card:#f8fafc; --ring:#93c5fd; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--fg); background: var(--bg); }
+    h1,h2,h3 { font-family: Spectral, Georgia, serif; }
+    a { text-decoration: none; }
+    header.hero { background: linear-gradient(135deg, rgba(14,165,233,.15), rgba(139,92,246,.15)); border-bottom: 1px solid #e5e7eb; }
+    .brand-badge { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800; letter-spacing: .5px; }
+    .skip-link{ position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus{ position:static; width:auto; height:auto; background:#111; color:#fff; padding:.5rem .75rem; border-radius:.5rem; }/* Cards e galeria */
+.card-smooth { border: 1px solid #e5e7eb; border-radius: 1rem; background: var(--card); box-shadow: 0 10px 20px rgba(2,6,23,.05); }
+.img-clip { border-radius: 1rem; }
+
+/* Linha do tempo */
+.timeline { position: relative; margin: 0; padding: 0; }
+.timeline::before { content:""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--brand), var(--brand-2)); transform: translateX(-50%); }
+.timeline-item { position: relative; margin: 2rem 0; }
+.timeline-item .content { width: 46%; padding: 1rem 1.25rem; border-radius: 1rem; background: var(--card); border:1px solid #e5e7eb; box-shadow: 0 6px 16px rgba(2,6,23,.06); }
+.timeline-item:nth-child(odd) .content { margin-left: 54%; }
+.timeline-item:nth-child(even) .content { margin-right: 54%; }
+.timeline-dot { position: absolute; left: 50%; top: .75rem; transform: translate(-50%,-50%); width: 18px; height: 18px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 6px rgba(14,165,233,.25); }
+@media (max-width: 992px){ .timeline::before{ left: 12px; } .timeline-dot{ left: 12px; } .timeline-item .content, .timeline-item:nth-child(odd) .content, .timeline-item:nth-child(even) .content{ width:auto; margin-left: 2.5rem; margin-right: 0; }
+}
+
+/* Acessibilidade */
+.acess-btn{ border-radius: 999px; border: 1px solid #dbeafe; background:#eff6ff; color:#0c4a6e; font-weight:700; }
+.acess-panel{ display:none; position:absolute; right:0; top:100%; background:#fff; border:1px solid #e5e7eb; border-radius: .75rem; padding:.5rem; z-index:10; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.acessible .acess-panel{ display:block; }
+.badge-era{ background: #e0f2fe; color:#075985; border-radius: 999px; padding:.15rem .5rem; font-size:.8rem; }
+.kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .85rem; border:1px solid #e5e7eb; border-bottom-width:2px; background:#f8fafc; padding:.15rem .4rem; border-radius:.4rem; }
+
+/* Tema escuro */
+.dark{ --bg:#0b1220; --fg:#e5e7eb; --muted:#94a3b8; --card:#0f172a; --ring:#1d4ed8; }
+.dark header.hero{ background: linear-gradient(135deg, rgba(14,165,233,.05), rgba(139,92,246,.05)); border-color:#1f2937; }
+.dark .card-smooth{ border-color:#1f2937; box-shadow: none; }
+.dark .timeline::before{ filter: brightness(.9); }
+
+/* Rodapé refs */
+.refs small a{ text-decoration: underline dotted; }
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir direto ao conteúdo</a>  <header class="hero py-4">
+    <nav class="container d-flex align-items-center justify-content-between" aria-label="Navegação principal">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-journal-richtext fs-3" aria-hidden="true"></i>
+        <span class="brand-badge fs-4">Literatura Brasileira</span>
+      </div>
+      <ul class="nav d-none d-lg-flex">
+        <li class="nav-item"><a class="nav-link" href="#panorama">Panorama</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+        <li class="nav-item"><a class="nav-link" href="#linha">Linha do tempo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#autores">Autores</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dados">Dados & Prêmios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quiz">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul><div class="position-relative">
+    <button id="btn-acess" class="btn acess-btn" aria-haspopup="true" aria-expanded="false" aria-controls="painel-acess"><i class="bi bi-universal-access-circle me-1"></i>Acessibilidade</button>
+    <div id="painel-acess" class="acess-panel" role="menu" aria-label="Opções de acessibilidade">
+      <div class="d-flex gap-2 flex-wrap">
+        <button id="inc-font" class="btn btn-sm btn-outline-primary" role="menuitem" aria-label="Aumentar fonte">A+</button>
+        <button id="dec-font" class="btn btn-sm btn-outline-primary" role="menuitem" aria-label="Diminuir fonte">A-</button>
+        <button id="toggle-dark" class="btn btn-sm btn-outline-secondary" role="menuitem" aria-label="Ativar/Desativar alto contraste"><i class="bi bi-moon-stars"></i></button>
+        <button id="reset-font" class="btn btn-sm btn-outline-secondary" role="menuitem" aria-label="Restaurar fonte padrão">Reset</button>
+      </div>
+      <small class="text-muted d-block mt-1">Dica: use <span class="kbd">Ctrl</span> + <span class="kbd">+</span> / <span class="kbd">-</span> do navegador também.</small>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold">Um passeio moderno pela <span class="brand-badge">Literatura Brasileira</span></h1>
+      <p class="lead mb-4">Site-portfólio com foco cultural: panorama histórico, linha do tempo interativa, autores essenciais e um quiz final. Conteúdo referenciado em fontes confiáveis e imagens com licenças adequadas.</p>
+      <a class="btn btn-primary btn-lg me-2" href="#panorama">Começar agora</a>
+      <a class="btn btn-outline-primary btn-lg" href="#dados">Ver dados & prêmios</a>
+    </div>
+    <div class="col-lg-5">
+      <div class="card-smooth p-3">
+        <img class="img-fluid img-clip" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Machado_de_Assis_by_Marc_Ferrez_-_Original.jpg" alt="Retrato de Machado de Assis por Marc Ferrez" loading="lazy" />
+        <small class="text-muted d-block mt-2">Retrato de Machado de Assis por Marc Ferrez (Domínio público).</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </header>  <main id="conteudo" class="container py-5">
+    <!-- PANORAMA -->
+    <section id="panorama" class="py-4">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5">
+          <img class="img-fluid img-clip" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Clarice_Lispector%2C_1968.jpg" alt="Clarice Lispector, 1968" loading="lazy" />
+          <small class="text-muted d-block mt-2">Clarice Lispector, 1968 (informado como Domínio público no Commons).</small>
+        </div>
+        <div class="col-lg-7">
+          <h2 class="fw-bold mb-3">Panorama histórico</h2>
+          <p>A literatura brasileira se desenvolveu do período colonial aos dias atuais, atravessando movimentos como Barroco, Arcadismo, Romantismo, Realismo/Naturalismo, Parnasianismo, Simbolismo, Modernismo (com a Semana de 1922), Geração de 45 e produção contemporânea. Além de dialogar com tradições europeias, consolidou vozes próprias, do <em>sertão</em> de Guimarães Rosa à introspecção de Clarice Lispector, do lirismo de Cecília Meireles à crítica social de Carolina Maria de Jesus.</p>
+          <p class="mb-0"><strong>Instituições-chave:</strong> a Academia Brasileira de Letras foi fundada em <strong>20 de julho de 1897</strong>, no Rio de Janeiro, por iniciativa de Machado de Assis; o Prêmio Jabuti teve sua primeira cerimônia ao fim de <strong>1959</strong>; o Prêmio Camões foi instituído em <strong>1988</strong> por Brasil e Portugal.</p>
+          <small class="text-muted">Fontes: ABL; CBL/Jabuti; Biblioteca Nacional do Brasil & DGLAB (Prêmio Camões). Veja os links na seção “Referências”.</small>
+        </div>
+      </div>
+    </section><!-- GALERIA -->
+<section id="galeria" class="py-5">
+  <h2 class="fw-bold text-center mb-4">Galeria comentada</h2>
+  <div class="row g-4">
+    <figure class="col-md-6 col-lg-3">
+      <img class="w-100 img-clip" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Machado_de_Assis_by_Marc_Ferrez_-_Original.jpg" alt="Machado de Assis por Marc Ferrez" loading="lazy" />
+      <figcaption class="small text-muted mt-2">Machado de Assis (Marc Ferrez, domínio público).</figcaption>
+    </figure>
+    <figure class="col-md-6 col-lg-3">
+      <img class="w-100 img-clip" src="https://upload.wikimedia.org/wikipedia/commons/6/64/Clarice_Lispector%2C_1968.jpg" alt="Clarice Lispector, 1968" loading="lazy" />
+      <figcaption class="small text-muted mt-2">Clarice Lispector (1968, indicação de domínio público no Commons).</figcaption>
+    </figure>
+    <figure class="col-md-6 col-lg-3">
+      <img class="w-100 img-clip" src="https://upload.wikimedia.org/wikipedia/commons/9/98/Casa_Guimaraes_Rosa_%2824%29_%286141340050%29.jpg" alt="Casa Guimarães Rosa, Cordisburgo" loading="lazy" />
+      <figcaption class="small text-muted mt-2">Casa Guimarães Rosa (CC BY 2.0, ver Commons para detalhes de atribuição).</figcaption>
+    </figure>
+    <figure class="col-md-6 col-lg-3">
+      <img class="w-100 img-clip" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Carolina_Maria_de_Jesus_%28cropped%29.jpg" alt="Carolina Maria de Jesus autografando Quarto de Despejo, 1960" loading="lazy" />
+      <figcaption class="small text-muted mt-2">Carolina Maria de Jesus, 1960 (Arquivo Nacional do Brasil, ver Commons; indicado como domínio público).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section id="linha" class="py-5">
+  <h2 class="fw-bold text-center mb-4">Linha do tempo · movimentos</h2>
+  <div class="timeline" aria-label="Linha do tempo da literatura brasileira">
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Barroco (séc. XVII)</h3>
+        <p>Estilo marcado por contraste e exuberância formal. Em prosa e poesia, dialoga com o contexto colonial e religioso. Referência inaugural muitas vezes apontada: <em>Prosopopeia</em> (1601), de Bento Teixeira.</p>
+        <span class="badge-era">Gregório de Matos, Bento Teixeira</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Arcadismo (c. 1768–1836)</h3>
+        <p>Valorização do equilíbrio clássico e da natureza idealizada, com poesia de tom bucólico e medida.</p>
+        <span class="badge-era">Cláudio Manuel da Costa, Tomás A. Gonzaga</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Romantismo (1836–c. 1880)</h3>
+        <p>Afirmação de identidade nacional, subjetividade e historicidade. Em prosa, consolida-se o romance brasileiro; na poesia, destacam-se vertentes indianista e social.</p>
+        <span class="badge-era">José de Alencar, Castro Alves</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Realismo & Naturalismo (a partir de 1881)</h3>
+        <p>Olhar crítico e científico sobre sociedade e psicologia. Marco simbólico: <em>Memórias Póstumas de Brás Cubas</em> (1881). Naturalismo acentua determinismos sociais e biológicos.</p>
+        <span class="badge-era">Machado de Assis, Aluísio Azevedo</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Parnasianismo & Simbolismo (final do séc. XIX)</h3>
+        <p>Formalismo parnasiano e espiritualidade simbolista convivem e disputam espaço na poesia brasileira.</p>
+        <span class="badge-era">Olavo Bilac, Cruz e Souza</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Pré-Modernismo (c. 1902–1922)</h3>
+        <p>Heterogêneo, transita entre tradição e ruptura, ampliando temas regionais e sociais.</p>
+        <span class="badge-era">Lima Barreto, Euclides da Cunha</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Modernismo (1922–45)</h3>
+        <p>Ruptura estética e busca de linguagem brasileira, catalisada pela <strong>Semana de Arte Moderna (1922)</strong>. Fases com diversidade de propostas.</p>
+        <span class="badge-era">Mário & Oswald de Andrade, Drummond</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Geração de 45 (c. 1945–60s)</h3>
+        <p>Retomada de rigor formal e reflexão existencial na poesia; prosa plural e sofisticada.</p>
+        <span class="badge-era">João Cabral, Clarice Lispector</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="content">
+        <h3>Contemporânea (desde 1960)</h3>
+        <p>Multiplicidade de vozes, gêneros e perspectivas (negras, indígenas, LGBTQIA+, periféricas), com forte presença de mulheres e regionalidades.</p>
+        <span class="badge-era">Carolina M. de Jesus, Conceição Evaristo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTORES ESSENCIAIS -->
+<section id="autores" class="py-5">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+    <h2 class="fw-bold m-0">Autores essenciais</h2>
+    <div class="d-flex gap-2">
+      <input id="busca-autores" class="form-control" placeholder="Buscar por nome, movimento ou obra" aria-label="Buscar autores" />
+      <button id="limpar-busca" class="btn btn-outline-secondary"><i class="bi bi-eraser"></i> Limpar</button>
+    </div>
+  </div>
+  <div id="grid-autores" class="row g-4">
+    <!-- Cartões gerados por JS -->
+  </div>
+</section>
+
+<!-- DADOS & PRÊMIOS -->
+<section id="dados" class="py-5">
+  <h2 class="fw-bold text-center mb-4">Dados & prêmios</h2>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="card-smooth p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-buildings fs-2" aria-hidden="true"></i>
+          <div>
+            <div class="fw-bold">Academia Brasileira de Letras</div>
+            <div class="text-muted">Fundação: <strong>20/07/1897</strong></div>
+            <small class="text-muted">Fonte: ABL (site oficial).</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card-smooth p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-bookmark-star fs-2" aria-hidden="true"></i>
+          <div>
+            <div class="fw-bold">Prêmio Jabuti</div>
+            <div class="text-muted">1ª cerimônia: <strong>1959</strong></div>
+            <small class="text-muted">Fonte: Câmara Brasileira do Livro.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card-smooth p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-trophy fs-2" aria-hidden="true"></i>
+          <div>
+            <div class="fw-bold">Prêmio Camões</div>
+            <div class="text-muted">Instituído: <strong>1988</strong></div>
+            <small class="text-muted">Fonte: Biblioteca Nacional (BR) / DGLAB (PT).</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card-smooth p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-c-circle fs-2" aria-hidden="true"></i>
+          <div>
+            <div class="fw-bold">Direitos autorais (Brasil)</div>
+            <div class="text-muted">Regra geral: <strong>70 anos p.m.a.</strong></div>
+            <small class="text-muted">Fonte: Lei 9.610/1998, art. 41.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-smooth p-4 mt-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <h3 class="h5 m-0">Baixar lista de leitura (JSON)</h3>
+        <small class="text-muted">Curadoria com obras em domínio público e contemporâneas (para comprar/emprestar). Títulos são informação factual.</small>
+      </div>
+      <button id="btn-download" class="btn btn-primary"><i class="bi bi-download"></i> Baixar</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="py-5">
+  <h2 class="fw-bold text-center mb-4">Quiz rápido</h2>
+  <form id="form-quiz" class="card-smooth p-4">
+    <ol class="mb-0" style="line-height:1.9">
+      <li class="mb-3">
+        A <strong>Semana de Arte Moderna</strong> ocorreu em qual cidade e ano?
+        <div class="mt-2">
+          <label class="d-block"><input type="radio" name="q1" value="a" /> Rio de Janeiro, 1925</label>
+          <label class="d-block"><input type="radio" name="q1" value="b" /> São Paulo, 1922</label>
+          <label class="d-block"><input type="radio" name="q1" value="c" /> Belo Horizonte, 1930</label>
+        </div>
+      </li>
+      <li class="mb-3">
+        Qual obra marca simbolicamente o início do <strong>Realismo</strong> no Brasil?
+        <div class="mt-2">
+          <label class="d-block"><input type="radio" name="q2" value="a" /> O Guarani</label>
+          <label class="d-block"><input type="radio" name="q2" value="b" /> Iracema</label>
+          <label class="d-block"><input type="radio" name="q2" value="c" /> Memórias Póstumas de Brás Cubas</label>
+        </div>
+      </li>
+      <li class="mb-3">
+        A <strong>ABL</strong> foi fundada em:
+        <div class="mt-2">
+          <label class="d-block"><input type="radio" name="q3" value="a" /> 1897</label>
+          <label class="d-block"><input type="radio" name="q3" value="b" /> 1912</label>
+          <label class="d-block"><input type="radio" name="q3" value="c" /> 1889</label>
+        </div>
+      </li>
+      <li class="mb-3">
+        <strong>Carolina Maria de Jesus</strong> ficou mundialmente conhecida por qual livro?
+        <div class="mt-2">
+          <label class="d-block"><input type="radio" name="q4" value="a" /> Quarto de Despejo</label>
+          <label class="d-block"><input type="radio" name="q4" value="b" /> Capitães da Areia</label>
+          <label class="d-block"><input type="radio" name="q4" value="c" /> A Hora da Estrela</label>
+        </div>
+      </li>
+      <li class="mb-3">
+        O <strong>Prêmio Camões</strong> foi instituído em:
+        <div class="mt-2">
+          <label class="d-block"><input type="radio" name="q5" value="a" /> 1959</label>
+          <label class="d-block"><input type="radio" name="q5" value="b" /> 1988</label>
+          <label class="d-block"><input type="radio" name="q5" value="c" /> 2001</label>
+        </div>
+      </li>
+    </ol>
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-primary" type="submit">Ver resultado</button>
+      <button id="reset-quiz" class="btn btn-outline-secondary" type="button">Refazer</button>
+    </div>
+    <div id="resultado-quiz" class="alert mt-3 d-none" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card-smooth p-4">
+        <h2 class="fw-bold">Entre em contato</h2>
+        <form id="form-contato" novalidate>
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input id="nome" name="nome" type="text" class="form-control" required placeholder="Seu nome completo" />
+            <div class="invalid-feedback">Por favor, informe seu nome.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="email" class="form-control" required placeholder="voce@exemplo.com" />
+            <div class="invalid-feedback">Informe um e-mail válido.</div>
+          </div>
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" class="form-control" rows="4" required placeholder="Escreva sua mensagem"></textarea>
+            <div class="invalid-feedback">Escreva uma mensagem.</div>
+          </div>
+          <div class="d-grid d-sm-flex gap-2">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-send"></i> Enviar</button>
+            <button class="btn btn-outline-secondary" type="reset">Limpar</button>
+          </div>
+          <div id="ok-contato" class="alert alert-success mt-3 d-none" role="status">Mensagem registrada localmente (demo). Nenhum dado é enviado a servidor.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section id="referencias" class="py-5 refs">
+  <h2 class="fw-bold text-center mb-4">Referências & Licenças</h2>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card-smooth p-3 h-100">
+        <h3 class="h5">Fontes (conteúdo)</h3>
+        <ul class="small m-0">
+          <li><a href="https://www.academia.org.br" target="_blank" rel="noopener">Academia Brasileira de Letras — site oficial</a></li>
+          <li><a href="https://jabuti.org.br/historia" target="_blank" rel="noopener">Prêmio Jabuti — Câmara Brasileira do Livro — História</a></li>
+          <li><a href="https://antigo.bn.gov.br/explore/premios-literarios/premio-camoes-literatura" target="_blank" rel="noopener">Biblioteca Nacional (BR): Prêmio Camões</a> e <a href="https://livro.dglab.gov.pt/sites/DGLB/Portugues/premios/PremioCamoes/Paginas/PremioCamoes.aspx" target="_blank" rel="noopener">DGLAB (PT): Prémio Camões</a></li>
+          <li><a href="https://www.planalto.gov.br/ccivil_03/leis/l9610.htm#art41" target="_blank" rel="noopener">Lei 9.610/1998 (Brasil), art. 41 — prazo de proteção (70 anos p.m.a.)</a></li>
+          <li><a href="https://www.britannica.com/art/Brazilian-literature" target="_blank" rel="noopener">Encyclopaedia Britannica: Brazilian literature</a> • <a href="https://www.britannica.com/event/Modern-Art-Week" target="_blank" rel="noopener">Modern Art Week (Semana de 1922)</a></li>
+          <li><a href="https://enciclopedia.itaucultural.org.br/pessoa341/machado-de-assis" target="_blank" rel="noopener">Enciclopédia Itaú Cultural: Machado de Assis</a> (e verbetes correlatos)
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card-smooth p-3 h-100">
+        <h3 class="h5">Imagens (licenças)</h3>
+        <ul class="small m-0">
+          <li>Machado de Assis por Marc Ferrez — <a href="https://commons.wikimedia.org/wiki/File:Machado_de_Assis_by_Marc_Ferrez_-_Original.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (domínio público).</li>
+          <li>Clarice Lispector (1968) — <a href="https://commons.wikimedia.org/wiki/File:Clarice_Lispector,_1968.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (informada como domínio público).</li>
+          <li>Casa Guimarães Rosa — <a href="https://commons.wikimedia.org/wiki/File:Casa_Guimaraes_Rosa_(24)_(6141340050).jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (CC BY 2.0, atribuição no Commons).</li>
+          <li>Carolina Maria de Jesus (1960) — <a href="https://commons.wikimedia.org/wiki/File:Carolina_Maria_de_Jesus_(cropped).jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (Arquivo Nacional do Brasil; indic. domínio público).</li>
+        </ul>
+        <small class="text-muted d-block mt-2">Atribuições e detalhes completos estão nas páginas dos arquivos no Commons. Evitamos trechos extensos de obras protegidas; títulos e dados factuais são usados em conformidade com a lei.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer class="py-4 border-top">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <p class="m-0 small">Portfólio educacional · Sem fins comerciais · <span id="ano"></span></p>
+      <div class="d-flex gap-3 fs-5">
+        <a aria-label="Instagram" href="#"><i class="bi bi-instagram"></i></a>
+        <a aria-label="GitHub" href="#"><i class="bi bi-github"></i></a>
+        <a aria-label="LinkedIn" href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>  <script>
+  // ===== Estado persistente (tema & fonte) =====
+  const root = document.documentElement;
+  const btnAcess = document.getElementById('btn-acess');
+  const painel = document.getElementById('painel-acess');
+  const incBtn = document.getElementById('inc-font');
+  const decBtn = document.getElementById('dec-font');
+  const resetBtn = document.getElementById('reset-font');
+  const darkBtn = document.getElementById('toggle-dark');
+
+  const loadPrefs = () => {
+    const fs = localStorage.getItem('fs');
+    const dark = localStorage.getItem('dark');
+    if (fs) root.style.fontSize = fs;
+    if (dark === '1') document.body.classList.add('dark');
+  };
+  const saveFont = () => localStorage.setItem('fs', getComputedStyle(root).fontSize);
+  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+  btnAcess.addEventListener('click', () => {
+    const open = btnAcess.getAttribute('aria-expanded') === 'true';
+    btnAcess.setAttribute('aria-expanded', String(!open));
+    btnAcess.parentElement.classList.toggle('acessible');
+    painel.id = 'painel-acess';
+  });
+
+  incBtn.addEventListener('click', () => {
+    const cur = parseFloat(getComputedStyle(root).fontSize);
+    const next = clamp(cur + 1, 12, 22);
+    root.style.fontSize = next + 'px';
+    saveFont();
+  });
+  decBtn.addEventListener('click', () => {
+    const cur = parseFloat(getComputedStyle(root).fontSize);
+    const next = clamp(cur - 1, 12, 22);
+    root.style.fontSize = next + 'px';
+    saveFont();
+  });
+  resetBtn.addEventListener('click', () => { root.style.fontSize = '16px'; saveFont(); });
+  darkBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+  });
+  loadPrefs();
+
+  // ===== Dados dos autores (fatos e títulos) =====
+  const autores = [
+    { nome: 'Machado de Assis', movimento: 'Realismo', periodo: 'séc. XIX', obras: ['Memórias Póstumas de Brás Cubas (1881)', 'Dom Casmurro (1899)'], img: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Machado_de_Assis_by_Marc_Ferrez_-_Original.jpg' },
+    { nome: 'Clarice Lispector', movimento: 'Geração de 45', periodo: 'séc. XX', obras: ['Perto do Coração Selvagem (1943)', 'A Hora da Estrela (1977)'], img: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Clarice_Lispector%2C_1968.jpg' },
+    { nome: 'João Guimarães Rosa', movimento: 'Modernismo tardio', periodo: 'séc. XX', obras: ['Grande Sertão: Veredas (1956)', 'Sagarana (1946)'], img: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Casa_Guimaraes_Rosa_%2824%29_%286141340050%29.jpg' },
+    { nome: 'Carolina Maria de Jesus', movimento: 'Contemporânea', periodo: 'séc. XX', obras: ['Quarto de Despejo (1960)'], img: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Carolina_Maria_de_Jesus_%28cropped%29.jpg' },
+    { nome: 'Cecília Meireles', movimento: 'Modernismo', periodo: 'séc. XX', obras: ['Romanceiro da Inconfidência (1953)'], img: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Cecilia_Meireles_1958.jpg' },
+    { nome: 'Carlos Drummond de Andrade', movimento: 'Modernismo', periodo: 'séc. XX', obras: ['Alguma Poesia (1930)', 'A Rosa do Povo (1945)'], img: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Drummond_1970.jpg' },
+    { nome: 'Lima Barreto', movimento: 'Pré-Modernismo', periodo: 'séc. XX', obras: ['Triste Fim de Policarpo Quaresma (1915)'], img: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Lima_Barreto.jpg' },
+    { nome: 'José de Alencar', movimento: 'Romantismo', periodo: 'séc. XIX', obras: ['Iracema (1865)', 'O Guarani (1857)'], img: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Jos%C3%A9_de_Alencar.jpg' }
+  ];
+
+  const grid = document.getElementById('grid-autores');
+  const renderAutores = (lista) => {
+    grid.innerHTML = '';
+    lista.forEach(a => {
+      const col = document.createElement('div');
+      col.className = 'col-sm-6 col-lg-3';
+      col.innerHTML = `
+        <article class="card-smooth h-100">
+          <img src="${a.img}" alt="${a.nome}" class="w-100 img-clip" loading="lazy" />
+          <div class="p-3">
+            <h3 class="h5 mb-1">${a.nome}</h3>
+            <div class="text-muted small mb-2">${a.movimento} • ${a.periodo}</div>
+            <ul class="small m-0 ps-3">
+              ${a.obras.map(o=>`<li>${o}</li>`).join('')}
+            </ul>
+          </div>
+        </article>`;
+      grid.appendChild(col);
+    });
+  };
+  renderAutores(autores);
+
+  // Busca/filtro
+  const inputBusca = document.getElementById('busca-autores');
+  const limparBusca = document.getElementById('limpar-busca');
+  inputBusca.addEventListener('input', (e)=> {
+    const q = e.target.value.toLowerCase().trim();
+    const filtrados = autores.filter(a =>
+      a.nome.toLowerCase().includes(q) ||
+      a.movimento.toLowerCase().includes(q) ||
+      a.periodo.toLowerCase().includes(q) ||
+      a.obras.some(o => o.toLowerCase().includes(q))
+    );
+    renderAutores(filtrados);
+  });
+  limparBusca.addEventListener('click', ()=> { inputBusca.value=''; renderAutores(autores); inputBusca.focus(); });
+
+  // Download da lista de leitura (JSON)
+  document.getElementById('btn-download').addEventListener('click', ()=>{
+    const leitura = {
+      dominioPublico: [
+        { titulo:'Memórias Póstumas de Brás Cubas', autor:'Machado de Assis', ano:1881, link:'https://www.dominiopublico.gov.br' },
+        { titulo:'O Mulato', autor:'Aluísio Azevedo', ano:1881, link:'https://www.dominiopublico.gov.br' },
+        { titulo:'Triste Fim de Policarpo Quaresma', autor:'Lima Barreto', ano:1915, link:'https://www.dominiopublico.gov.br' }
+      ],
+      contemporaneas: [
+        { titulo:'Quarto de Despejo', autor:'Carolina Maria de Jesus', ano:1960 },
+        { titulo:'Grande Sertão: Veredas', autor:'João Guimarães Rosa', ano:1956 },
+        { titulo:'A Hora da Estrela', autor:'Clarice Lispector', ano:1977 }
+      ]
+    };
+    const blob = new Blob([JSON.stringify(leitura, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'lista-de-leitura-literatura-brasileira.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // Quiz
+  const gabarito = { q1:'b', q2:'c', q3:'a', q4:'a', q5:'b' };
+  const formQuiz = document.getElementById('form-quiz');
+  const outQuiz = document.getElementById('resultado-quiz');
+  document.getElementById('reset-quiz').addEventListener('click', ()=>{ outQuiz.className = 'alert d-none'; outQuiz.textContent=''; formQuiz.reset(); });
+  formQuiz.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const formData = new FormData(formQuiz);
+    let acertos = 0; let total = 0; const feedback = [];
+    Object.keys(gabarito).forEach(q => {
+      total++; const resp = formData.get(q);
+      if (resp === gabarito[q]) acertos++; else feedback.push(`Questão ${total} incorreta.`);
+    });
+    const pct = Math.round((acertos/total)*100);
+    outQuiz.className = 'alert ' + (pct>=60 ? 'alert-success' : 'alert-warning');
+    outQuiz.innerHTML = `<strong>${acertos}/${total}</strong> (${pct}%). ${feedback.length? 'Revise: Semana de 1922 (SP), início do Realismo (1881), ABL (1897), Carolina M. de Jesus — Quarto de Despejo, Camões (1988).':''}`;
+  });
+
+  // Validação do contato (front-end demo)
+  const formContato = document.getElementById('form-contato');
+  const okContato = document.getElementById('ok-contato');
+  formContato.addEventListener('submit', (ev)=>{
+    ev.preventDefault();
+    if (!formContato.checkValidity()) {
+      ev.stopPropagation();
+      formContato.classList.add('was-validated');
+      return;
+    }
+    // persiste no localStorage apenas para demo
+    const payload = { nome: formContato.nome.value, email: formContato.email.value, mensagem: formContato.mensagem.value, quando: new Date().toISOString() };
+    localStorage.setItem('contato-demo', JSON.stringify(payload));
+    okContato.classList.remove('d-none');
+    formContato.reset();
+    formContato.classList.remove('was-validated');
+  });
+
+  // Ano footer
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  </script></body>
+</html>
